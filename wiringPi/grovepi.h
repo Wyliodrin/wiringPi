@@ -1,7 +1,7 @@
 /*
- * mcp23016.h:
- *	Extend wiringPi with the MCP 23016 I2C GPIO expander chip
- *	Copyright (c) 2013 Gordon Henderson
+ * grovepi.h:
+ *	Extend wiringPi with the grovepi
+ *	Copyright (c) 2014 Wyliodrin
  ***********************************************************************
  * This file is part of wiringPi:
  *	https://projects.drogon.net/raspberry-pi/wiringpi/

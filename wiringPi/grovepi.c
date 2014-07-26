@@ -1,7 +1,7 @@
 
 /*
- * mcp23008.c:
- *  Extend wiringPi with the grovepi I2C GPIO expander chip
+ * grovepi.c:
+ *  Extend wiringPi with the grovepi
  *  Copyright (c) 2014 Wyliodrin
  ***********************************************************************
  * This file is part of wiringPi:
@@ -154,7 +154,7 @@ static int grovepiAnalogRead (struct wiringPiNodeStruct *node, int pin)
 
 
 /*
- * mcp23008Setup:
+ * grovepiSetup:
  *  Create a new instance of an grovepi I2C GPIO interface. 
  *********************************************************************************
  */
@@ -167,8 +167,6 @@ int grovepiSetup (const int pinBase, const int i2cAddress)
   if ((fd = wiringPiI2CSetup (i2cAddress)) < 0)
     return fd ;
 
-  // wiringPiI2CWriteReg8 (fd, MCP23x08_IOCON, IOCON_INIT) ;
-
   node = wiringPiNewNode (pinBase, 8) ;
 
   node->fd              = fd ;
@@ -177,7 +175,6 @@ int grovepiSetup (const int pinBase, const int i2cAddress)
   node->digitalWrite    = grovepiDigitalWrite ;
   node->analogRead      = grovepiAnalogRead ;
   node->analogWrite     = grovepiAnalogWrite ;
-  // node->data2           = wiringPiI2CReadReg8 (fd, MCP23x08_OLAT) ;
 
   return 0 ;
 }

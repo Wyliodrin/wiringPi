@@ -1,6 +1,6 @@
 /*
- * wiringPiI2C.h:
- *	Simplified I2C access routines
+ * mcp23016.h:
+ *	Extend wiringPi with the MCP 23016 I2C GPIO expander chip
  *	Copyright (c) 2013 Gordon Henderson
  ***********************************************************************
  * This file is part of wiringPi:
@@ -26,18 +26,7 @@
 extern "C" {
 #endif
 
-extern int wiringPiI2CRead           (int fd) ;
-extern int wiringPiI2CReadBuffer 	 (int fd, unsigned char reg, unsigned char *buffer, int length) ;
-extern int wiringPiI2CReadReg8       (int fd, int reg) ;
-extern int wiringPiI2CReadReg16      (int fd, int reg) ;
-
-extern int wiringPiI2CWrite          (int fd, int data) ;
-extern int wiringPiI2CWriteBuffer 	 (int fd, unsigned char reg, const unsigned char *buffer, int length) ;
-extern int wiringPiI2CWriteReg8      (int fd, int reg, int data) ;
-extern int wiringPiI2CWriteReg16     (int fd, int reg, int data) ;
-
-extern int wiringPiI2CSetupInterface (const char *device, int devId) ;
-extern int wiringPiI2CSetup          (const int devId) ;
+extern int grovepiSetup (const int pinBase, const int i2cAddress) ;
 
 #ifdef __cplusplus
 }

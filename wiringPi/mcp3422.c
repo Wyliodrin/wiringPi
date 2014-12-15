@@ -102,7 +102,7 @@ int mcp3422Setup (int pinBase, int i2cAddress, int sampleRate, int gain)
 
   node = wiringPiNewNode (pinBase, 4) ;
 
-  node->fd    =    fd;
+  node->fd         =    fd;
   node->data0      = sampleRate ;
   node->data1      = gain ;
   node->analogRead = myAnalogRead ;

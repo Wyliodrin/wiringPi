@@ -100,6 +100,8 @@ int mcp3422Setup (int pinBase, int i2cAddress, int sampleRate, int gain)
   if ((fd = wiringPiI2CSetup (i2cAddress)) < 0)
     return fd ;
 
+  node->fd = fd;
+
   node = wiringPiNewNode (pinBase, 4) ;
 
   node->data0      = sampleRate ;

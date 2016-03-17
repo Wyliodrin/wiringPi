@@ -1,7 +1,7 @@
 /*
- * grovepi.h:
- *	Extend wiringPi with the grovepi
- *	Copyright (c) 2014 Wyliodrin
+ * ads1115.c:
+ *	Extend wiringPi with the ADS1115 I2C 16-bit ADC
+ *	Copyright (c) 2016 Gordon Henderson
  ***********************************************************************
  * This file is part of wiringPi:
  *	https://projects.drogon.net/raspberry-pi/wiringpi/
@@ -22,11 +22,33 @@
  ***********************************************************************
  */
 
+// Constants for some of the internal functions
+
+//	Gain
+
+#define	ADS1115_GAIN_6		0
+#define	ADS1115_GAIN_4		1
+#define	ADS1115_GAIN_2		2
+#define	ADS1115_GAIN_1		3
+#define	ADS1115_GAIN_HALF	4
+#define	ADS1115_GAIN_QUARTER	5
+
+//	Data rate
+
+#define	ADS1115_DR_8		0
+#define	ADS1115_DR_16		1
+#define	ADS1115_DR_32		2
+#define	ADS1115_DR_64		3
+#define	ADS1115_DR_128		4
+#define	ADS1115_DR_250		5
+#define	ADS1115_DR_475		6
+#define	ADS1115_DR_860		7
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern int grovepiSetup (const int pinBase, const int i2cAddress) ;
+extern int ads1115Setup (int pinBase, int i2cAddress) ;
 
 #ifdef __cplusplus
 }

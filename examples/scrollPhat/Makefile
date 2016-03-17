@@ -3,7 +3,7 @@
 #	wiringPi - Wiring Compatable library for the Raspberry Pi
 #	https://projects.drogon.net/wiring-pi
 #
-#	Copyright (c) 2012 Gordon Henderson
+#	Copyright (c) 2012-2015 Gordon Henderson
 #################################################################################
 # This file is part of wiringPi:
 #	Wiring Compatable library for the Raspberry Pi
@@ -38,7 +38,7 @@ LDLIBS    = -lwiringPi -lwiringPiDev -lpthread -lm
 # Should not alter anything below this line
 ###############################################################################
 
-SRC	=	blink.c buttons.c reaction.c ladder.c metro.c motor.c
+SRC	=	scphat.c test.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -46,29 +46,14 @@ BINS	=	$(SRC:.c=)
 
 all:	$(BINS)
 
-blink:	blink.o
+test:	test.o
 	$Q echo [link]
-	$Q $(CC) -o $@ blink.o $(LDFLAGS) $(LDLIBS)
+	$Q $(CC) -o $@ test.o $(LDFLAGS) $(LDLIBS)
 
-buttons:	buttons.o
+scphat:	scphat.o
 	$Q echo [link]
-	$Q $(CC) -o $@ buttons.o $(LDFLAGS) $(LDLIBS)
+	$Q $(CC) -o $@ scphat.o $(LDFLAGS) $(LDLIBS)
 
-reaction:	reaction.o
-	$Q echo [link]
-	$Q $(CC) -o $@ reaction.o $(LDFLAGS) $(LDLIBS)
-
-ladder:	ladder.o
-	$Q echo [link]
-	$Q $(CC) -o $@ ladder.o $(LDFLAGS) $(LDLIBS)
-
-metro:	metro.o
-	$Q echo [link]
-	$Q $(CC) -o $@ metro.o $(LDFLAGS) $(LDLIBS)
-
-motor:	motor.o
-	$Q echo [link]
-	$Q $(CC) -o $@ motor.o $(LDFLAGS) $(LDLIBS)
 
 .c.o:
 	$Q echo [CC] $<
@@ -81,6 +66,12 @@ clean:
 tags:	$(SRC)
 	$Q echo [ctags]
 	$Q ctags $(SRC)
+
+install:	scphat
+	$Q echo Installing scphat into /usr/local/bin
+	$Q cp -a scphat /usr/local/bin/scphat
+	$Q chmod 755 /usr/local/bin/scphat
+	$Q echo Done. Remember to load the I2C drivers if needed.
 
 depend:
 	makedepend -Y $(SRC)

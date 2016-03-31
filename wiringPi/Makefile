@@ -56,6 +56,7 @@ SRC	=	wiringPi.c						\
 		pcf8574.c pcf8591.c					\
 		mcp3002.c mcp3004.c mcp4802.c mcp3422.c			\
 		max31855.c max5322.c ads1115.c				\
+		grovepi.c                                               \
 		sn3218.c						\
 		drcSerial.c						\
 		wpiExtensions.c
